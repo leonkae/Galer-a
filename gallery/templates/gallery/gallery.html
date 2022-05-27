@@ -1,5 +1,49 @@
-{% extends 'gallery/base.html' %}
-{% block content %}
+{% extends 'gallery/base.html' %} {% block content %}
+
+<div class="container">
   <h1>gallery</h1>
-  
+
+  <div class="row">
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-header">Categories</div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">All</li>
+          <li class="list-group-item">An item</li>
+          <li class="list-group-item">A second item</li>
+          <li class="list-group-item">A third item</li>
+
+          <a href="{%url 'add'%}" class="btn btn-primary btn-sm btn-block m2">
+            add photo
+          </a>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-md-9">
+      <div class="row">
+        <div>
+          <div class="col-md-4">
+            <div class="card my-2">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/en/thumb/8/88/Thor_Love_and_Thunder_poster.jpeg/220px-Thor_Love_and_Thunder_poster.jpeg"
+                class="image-thumbnail"
+                alt="Card image cap"
+              />
+              <div class="card-body">
+                <small>Category: nature</small>
+              </div>
+              <a
+                href="{% url 'photo' 1 %}"
+                class="btn btn-outline-dark btn-sm m-2"
+                >view</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 {% endblock %}
