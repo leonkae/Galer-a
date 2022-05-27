@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,16 +13,15 @@
       integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
       crossorigin="anonymous"
     />
-  </head>
-  <body>
-    {%block content%}
-    <h1>this test</h1>
+    {% block styles %} 
+    <link rel="stylesheet" href="{% static 'css/global.css'%}" />
     {% endblock %}
-
-
-
-
-    {% block scripts %}
+  </head>
+  <body class="m-5">
+    {%include "navbar.html" %}
+     {%block content%}
+    <h1>this test</h1>
+    {% endblock %} {% block scripts %}
 
     <!-- JavaScript Bundle with Popper -->
     <script
@@ -30,6 +30,5 @@
       crossorigin="anonymous"
     ></script>
     {% endblock %}
-
   </body>
 </html>
