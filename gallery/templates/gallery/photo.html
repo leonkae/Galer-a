@@ -6,9 +6,9 @@
                 <a href="{%url 'gallery' %}" class="btn btn-dark my-3">Back</a>
                 <div style="height:90vh;">
                     <img style="max-width: 100%; max-height: 100%;"
-                    src="https://upload.wikimedia.org/wikipedia/en/thumb/8/88/Thor_Love_and_Thunder_poster.jpeg/220px-Thor_Love_and_Thunder_poster.jpeg" alt="card image cap">
+                    src="{{images.image.url}}" alt="card image cap">
 
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis incidunt ratione itaque id commodi minus praesentium facilis odio. Non ducimus ut perspiciatis veritatis inventore veniam possimus magni modi omnis eligendi.</p>
+                    <p>{{images.description}}</p>
                 </div>
             </div>
         </div>
