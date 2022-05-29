@@ -1,11 +1,12 @@
-<nav class="navbar navbar-expand-lg bg-dark navbar-dark mb-5 fixed-top ">
+<nav class="navbar navbar-expand-lg bg-light  mb-5 fixed-top ">
   <!-- conatainer -->
   <div class="container">
     <a
       href="{% url 'gallery'%}"
       class="navbar-brand"
-      style="font-size: 4vh; font-family: 'Grand Hotel', cursive"
+      style="font-size: 4vh; font-family: 'Grand Hotel', cursive; color: black;"
       >Galería</a
+      
     >
 
     <!-- navbar toggler -->
@@ -14,9 +15,11 @@
       type="button"
       data-bs-toggle="collapse"
       data-bs-target="#navmenu"
+      style="color: black;"
     >
-      <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon dark" ></span>
     </button>
+    
 
     <!-- main div  -->
     <div class="collapse navbar-collapse" id="navmenu">
@@ -31,6 +34,7 @@
               role="button"
               data-bs-toggle="dropdown"
               aria-expanded="false"
+              style="color: black;"
             >
               Filter by Category
             </a>
@@ -66,6 +70,8 @@
               role="button"
               data-bs-toggle="dropdown"
               aria-expanded="false"
+              style="color: black;
+              "
             >
               Filter by location
             </a>
@@ -110,7 +116,7 @@
             class="form-control"
             placeholder="Search"
             name="image"
-            style="border-radius: 10px"
+            style="border-radius: 10px; border: solid 1px black;"
           />
           <div class="input-group-btn">
             <button class="btn btn-default" type="submit">

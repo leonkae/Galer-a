@@ -10,33 +10,30 @@
     font-size: 70px;
     color: #dfb722;
   }
-  .card{
+  .card {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-
   }
-  .card img{
+  .card img {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    
   }
-  
 </style>
 <!-- end of styles -->
 
+<div class="con-wrapper-fluid">
+  <!-- conatiner div -->
+  <div class="title">
+    <h1 style="text-align: center">Galería</h1>
+  </div>
 
-<!-- conatiner div -->
-<div class="title">
-  <h1 style="text-align: center">Galería</h1>
-</div>
+  <div class="container">
+    <!-- div that contains everything -->
 
-<div class="container">
-<!-- div that contains everything -->
+    <div class="row">
+      <!-- displaying actual images -->
 
-  <div class="row">
-<!-- displaying actual images -->
-
-    {% for image in images %}
+      {% for image in images %}
       <div class="col-s-6 col-md-4">
         <div class="card my-2">
           <img
@@ -47,7 +44,7 @@
 
           <div class="card-body">
             <small>Category:{{image.category.name}}</small>
-            <br>
+            <br />
             <small> location:{{image.location.name}}</small>
           </div>
 
@@ -58,9 +55,9 @@
           >
         </div>
       </div>
-    
-    {% endfor %}
+
+      {% endfor %}
+    </div>
   </div>
 </div>
-
 {% endblock %}
