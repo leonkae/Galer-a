@@ -13,6 +13,7 @@
 </style>
 <!-- end of styles -->
 
+
 <!-- conatiner div -->
 <div class="title">
   <h1 style="text-align: center">Galería</h1>
@@ -25,7 +26,7 @@
 <!-- displaying actual images -->
 
     {% for image in images %}
-      <div class="col-md-4">
+      <div class="col-s-6 col-md-4">
         <div class="card my-2">
           <img
             src="{{ image.image.url }}"
