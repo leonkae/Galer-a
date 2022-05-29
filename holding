@@ -1,0 +1,54 @@
+<form class="navbar-form" role="search" action="{% url 'search_results' %}">
+  <div class="input-group">
+    <input type="text" class="form-control" placeholder="Search" name="image" />
+    <div class="input-group-btn">
+      <button class="btn btn-default" type="submit">
+        <i class="glyphicon glyphicon-search"></i>
+      </button>
+    </div>
+  </div>
+</form>
+
+<!-- holding filter by category -->
+<div class="card">
+  <div class="card-header">Filter by Category</div>
+
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      <a href="{% url 'gallery'%}">All</a>
+    </li>
+
+    {%for category in categories %}
+    <li class="list-group-item">
+      <a href="{%url 'gallery' %}?category={{ category.name }}">
+        {{ category.name }}</a
+      >
+    </li>
+
+    {% endfor %}
+  </ul>
+</div>
+
+<!-- function for categories -->
+ category = request.GET.get('category')
+    if category == None:
+        images = Image.get_images()
+    else: 
+        images = Image.objects.filter(category__name=category)
+        print(images)
+categories =  Category.objects.all()
+
+
+
+        images = Image.objects.filter(category__name=category)
+
+        images = Image.objects.filter(location__name=location)
+    categories = Category.objects.all()
+
+
+     location = request.GET.get('location')
+
+
+
+
+     <!-- display locations -->

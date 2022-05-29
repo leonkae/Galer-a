@@ -1,20 +1,50 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from .models import Category, Location, Image
 # Create your views here.
 
+
 def gallery(request):
-    categories =  Category.objects.all()
-    images = Image.get_images()
+    '''function for displaying in main pages'''
+    # if statement (backend) for filter by category
+    category = request.GET.get('category') 
+    if category == None:
+        images = Image.get_images()
+    else:
+        images = Image.objects.filter(category__name=category)
+        print(images) 
+  
+    # querries
+    categories = Category.objects.all()
     locations = Location.objects.all()
+    return render(request, 'gallery/gallery.html',{'images':images, 'categories':categories, 'category':category, locations:locations})
+
+def galleryLocation(request):
+    locations = Location.objects.all()
+    # if statement (backend) for filter by location
+    location = request.GET.get('location')
+    if location == None:
+            images = Image.get_images()
+    else:
+        images = Image.objects.filter(location__name=location)
+        print(images)     
+    return render(request, 'gallery/gallery.html',{'images':images,'locations':locations})
     
-    # context = {'categories': categories,'images':images,'locations':locations}
-    
-    
-    
-    return render(request, 'gallery/gallery.html',{'images':images,'locations':locations, 'categories':categories})
 
 def viewPhoto(request,pk):
+    '''for viewing photo'''
     images = Image.objects.get(id=pk)
-    
     return render(request,'gallery/photo.html',{'images':images})
 
+
+def search_results(request):
+    '''search functionality'''
+    if 'image' in request.GET and request.GET['image']:
+        search_image = request.GET.get('image')
+        searched_images = Image.search_by_category(search_image)
+        message = f"{search_image}"
+        print (search_image)
+        return render(request,'gallery/search.html',{'searched_images':searched_images})
+
+    else:
+        message = "Did not really get that, please search again."
+        return render(request,'gallery/search.html', {'message':message})

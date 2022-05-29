@@ -1,23 +1,55 @@
 {% extends 'gallery/base.html' %} {% block content %}
 
+<!-- conatiner div -->
 <div class="container">
   <h1>gallery</h1>
 
+<!-- div that contains everything -->
   <div class="row">
     <div class="col-md-3">
+
+<!-- filter  by category-->
       <div class="card">
-        <div class="card-header">Categories</div>
+        <div class="card-header">Filter by Category</div>
+
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">All</li>
+          <li class="list-group-item">
+            <a href="{% url 'gallery'%}">All</a>
+          </li>
 
           {%for category in categories %}
-          <li class="list-group-item">{{category.name}}</li>
+          <li class="list-group-item">
+            <a href="{%url 'gallery' %}?category={{category.name}}">
+              {{category.name}}</a
+            >
+          </li>
+
+          {% endfor %}
+        </ul>
+      </div>
+
+<!-- filter by location -->
+      <div class="card">
+        <div class="card-header">Filter by location</div>
+
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <a href="{% url 'gallery'%}">All</a>
+          </li>
+
+          {%for loction in locations %}
+          <li class="list-group-item">
+            <a href="{%url 'gallery' %}?category={{ location.name }}">
+              {{ location.name }}</a
+            >
+          </li>
 
           {% endfor %}
         </ul>
       </div>
     </div>
 
+<!-- displaying actual images -->
     <div class="col-md-9">
       <div class="row">
         <div>
@@ -42,7 +74,6 @@
               >
             </div>
           </div>
-
           {% endfor %}
         </div>
       </div>
