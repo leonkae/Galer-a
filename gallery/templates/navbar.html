@@ -1,9 +1,14 @@
 <nav class="navbar navbar-expand-lg bg-dark navbar-dark py- fixed-top">
   <!-- conatainer -->
   <div class="container">
-    <a href="#" class="navbar-brand">Gallery</a>
+    <a
+      href="#"
+      class="navbar-brand"
+      style="font-size: 4vh; font-family: 'Grand Hotel', cursive"
+      >Galería</a
+    >
 
-<!-- navbar toggler -->
+    <!-- navbar toggler -->
     <button
       class="navbar-toggler"
       type="button"
@@ -13,10 +18,87 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-<!-- main div  -->
+    <!-- main div  -->
     <div class="collapse navbar-collapse" id="navmenu">
+      <div class="collapse navbar-collapse" id="navmenu">
+<!-- dropdown menu filter by category -->
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDarkDropdownMenuLink"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Filter by Category
+            </a>
+            <ul
+              class="dropdown-menu dropdown-menu-dark"
+              aria-labelledby="navbarDarkDropdownMenuLink"
+            >
+              <li>
+                <a class="dropdown-item" href="{% url 'gallery'%}">All</a>
+              </li>
 
-<!-- search form functions -->
+              {%for category in categories %}
+              <li>
+                <a
+                  class="dropdown-item"
+                  href="{%url 'gallery' %}?category={{category.name}}"
+                >
+                  {{category.name}}</a
+                >
+              </li>
+              {% endfor %}
+            </ul>
+          </li>
+        </ul>
+
+<!-- dropdown menu filter by location -->
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDarkDropdownMenuLink"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Filter by location
+            </a>
+            <ul
+              class="dropdown-menu dropdown-menu-dark"
+              aria-labelledby="navbarDarkDropdownMenuLink"
+            >
+              <li>
+                <a class="dropdown-item" href="{% url 'gallery'%}">All</a>
+              </li>
+
+              {%for location in locations %}
+              <li>
+                <a
+                  class="dropdown-item"
+                  href="{%url 'gallery' %}?category={{location.name}}"
+                >
+                  {{location.name}}</a
+                >
+              </li>
+              {% endfor %}
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a href="#" class="nav-link"></a>
+        </li>
+      </ul>
+
+      <!-- search form functions -->
       <form
         class="navbar-form"
         role="search"
@@ -28,6 +110,7 @@
             class="form-control"
             placeholder="Search"
             name="image"
+            style="border-radius: 10px"
           />
           <div class="input-group-btn">
             <button class="btn btn-default" type="submit">

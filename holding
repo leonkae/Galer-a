@@ -51,4 +51,44 @@ categories =  Category.objects.all()
 
 
 
-     <!-- display locations -->
+<!-- display locations & categories-->
+         <div class="col-md-4">
+<!-- filter  by category-->
+      <div class="card">
+        <div class="card-header">Filter by Category</div>
+
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <a href="{% url 'gallery'%}">All</a>
+          </li>
+
+          {%for category in categories %}
+          <li class="list-group-item">
+            <a href="{%url 'gallery' %}?category={{category.name}}">
+              {{category.name}}</a
+            >
+          </li>
+
+          {% endfor %}
+        </ul>
+      </div>
+<!-- filter by location -->
+      <div class="card">
+        <div class="card-header">Filter by location</div>
+
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <a href="{% url 'gallery'%}">All</a>
+          </li>
+
+          {%for loction in locations %}
+          <li class="list-group-item">
+            <a href="{%url 'gallery' %}?category={{ location.name }}">
+              {{ location.name }}</a
+            >
+          </li>
+
+          {% endfor %}
+        </ul>
+      </div>
+    </div>

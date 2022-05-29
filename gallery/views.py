@@ -37,7 +37,7 @@ def viewPhoto(request,pk):
 
 
 def search_results(request):
-    '''search functionality'''
+    '''search function'''
     if 'image' in request.GET and request.GET['image']:
         search_image = request.GET.get('image')
         searched_images = Image.search_by_category(search_image)

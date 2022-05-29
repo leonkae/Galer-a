@@ -1,83 +1,52 @@
 {% extends 'gallery/base.html' %} {% block content %}
 
+<!-- styles -->
+<style>
+  .title {
+    margin-top: 100px;
+  }
+  h1 {
+    font-family: "Grand Hotel", cursive;
+    font-size: 70px;
+    color: #dfb722;
+  }
+</style>
+<!-- end of styles -->
+
 <!-- conatiner div -->
+<div class="title">
+  <h1 style="text-align: center">Galería</h1>
+</div>
+
 <div class="container">
-  <h1>gallery</h1>
-
 <!-- div that contains everything -->
+
   <div class="row">
-    <div class="col-md-3">
-
-<!-- filter  by category-->
-      <div class="card">
-        <div class="card-header">Filter by Category</div>
-
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">
-            <a href="{% url 'gallery'%}">All</a>
-          </li>
-
-          {%for category in categories %}
-          <li class="list-group-item">
-            <a href="{%url 'gallery' %}?category={{category.name}}">
-              {{category.name}}</a
-            >
-          </li>
-
-          {% endfor %}
-        </ul>
-      </div>
-
-<!-- filter by location -->
-      <div class="card">
-        <div class="card-header">Filter by location</div>
-
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">
-            <a href="{% url 'gallery'%}">All</a>
-          </li>
-
-          {%for loction in locations %}
-          <li class="list-group-item">
-            <a href="{%url 'gallery' %}?category={{ location.name }}">
-              {{ location.name }}</a
-            >
-          </li>
-
-          {% endfor %}
-        </ul>
-      </div>
-    </div>
-
 <!-- displaying actual images -->
-    <div class="col-md-9">
-      <div class="row">
-        <div>
-          {% for image in images %}
-          <div class="col-md-4">
-            <div class="card my-2">
-              <img
-                src="{{ image.image.url }}"
-                class="image-thumbnail"
-                alt="Card image cap"
-              />
 
-              <div class="card-body">
-                <small>Category:{{image.category.name}}</small>
-                <small> location:{{image.location.name}}</small>
-              </div>
+    {% for image in images %}
+      <div class="col-md-4">
+        <div class="card my-2">
+          <img
+            src="{{ image.image.url }}"
+            class="image-thumbnail"
+            alt="Card image cap"
+          />
 
-              <a
-                href="{% url 'photo' image.id %}"
-                class="btn btn-outline-dark btn-sm m-2"
-                >view</a
-              >
-            </div>
+          <div class="card-body">
+            <small>Category:{{image.category.name}}</small>
+            <small> location:{{image.location.name}}</small>
           </div>
-          {% endfor %}
+
+          <a
+            href="{% url 'photo' image.id %}"
+            class="btn btn-outline-dark btn-sm m-2"
+            >view</a
+          >
         </div>
       </div>
-    </div>
+    
+    {% endfor %}
   </div>
 </div>
 
