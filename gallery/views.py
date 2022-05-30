@@ -1,3 +1,4 @@
+from unicodedata import category
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from .models import Category, Location, Image
@@ -35,11 +36,13 @@ def viewPhoto(request,pk):
 
 def search_results(request):
     '''search function'''
-    if 'image' in request.GET and request.GET['image']:
-        search_image = request.GET.get('image')
-        searched_images = Image.search_by_category(search_image)
-        message = f"{search_image}"
-        print (search_image)
+    print("submitted", request)
+    category = request.GET.get('image')
+    if category:
+        # search_image = request.GET.get('category')
+        searched_images = Image.search_by_category(category)
+        # message = f"{search_image}"
+        # print (search_image)
         return render(request,'gallery/search.html',{'searched_images':searched_images})
 
     else:

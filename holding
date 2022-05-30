@@ -30,13 +30,13 @@
 </div>
 
 <!-- function for categories -->
- category = request.GET.get('category')
-    if category == None:
+ location = request.GET.get('location')
+    if location == None:
         images = Image.get_images()
     else: 
-        images = Image.objects.filter(category__name=category)
+        images = Image.objects.filter(location__name=category)
         print(images)
-categories =  Category.objects.all()
+location__name =  location.objects.all()
 
 
 
