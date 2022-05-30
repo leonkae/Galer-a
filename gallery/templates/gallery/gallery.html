@@ -14,9 +14,7 @@
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
   }
- 
 </style>
-
 
 <!-- end of styles -->
 
@@ -31,7 +29,7 @@
 
     <!-- start of modal -->
 
-<!-- end of modal -->
+    <!-- end of modal -->
     <div class="row">
       <!-- displaying actual images -->
 
@@ -44,17 +42,23 @@
             alt="Card image cap"
           />
 
-          <div class="card-body">
-            <small>Category:{{image.category.name}}</small>
+          <div class="card-body" style="font-family: 'Poppins', sans-serif; font-size:larger; ">
+            <small>Category: {{image.category.name}}</small>
             <br />
-            <small> location:{{image.location.name}}</small>
+            <small>Location: {{image.location.name}}</small>
           </div>
-
-          <a
-            href="{% url 'photo' image.id %}"
-            class="btn btn-outline-dark btn-sm m-2"
-            >view</a
-          >
+          <div class="card-body">
+            <a
+              href="{% url 'photo' image.id %}"
+              class="btn  btn-sm m-2"
+              ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></a
+            >
+            <a
+              href="{% url 'photo' image.id %}"
+              class="btn btn-sm m-2"
+              ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></a
+            >
+          </div>
         </div>
       </div>
 
