@@ -1,3 +1,4 @@
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from .models import Category, Location, Image
 # Create your views here.
@@ -7,27 +8,23 @@ def gallery(request):
     '''function for displaying in main pages'''
     # if statement (backend) for filter by category
     category = request.GET.get('category') 
-    if category == None:
-        images = Image.get_images()
-    else:
-        images = Image.objects.filter(category__name=category)
-        print(images) 
-  
-    # querries
+    location = request.GET.get('location')
     categories = Category.objects.all()
     locations = Location.objects.all()
-    return render(request, 'gallery/gallery.html',{'images':images, 'categories':categories, 'category':category, locations:locations})
-
-def galleryLocation(request):
-    locations = Location.objects.all()
-    # if statement (backend) for filter by location
-    location = request.GET.get('location')
-    if location == None:
-            images = Image.get_images()
+    if category == None and location==None:
+        images = Image.get_images()
+        return render(request, 'gallery/gallery.html',{'images':images, 'categories':categories,'locations':locations})
     else:
-        images = Image.objects.filter(location__name=location)
-        print(images)     
-    return render(request, 'gallery/gallery.html',{'images':images,'locations':locations})
+        if category == None and location:
+            images = Image.objects.filter(location__name=location)
+            print(location)
+            print(images) 
+        else:
+            images = Image.objects.filter(category__name=category)
+            print(category)
+            print(images)     
+        return render(request, 'gallery/gallery.html',{'images':images, 'categories':categories, 'category':category, 'locations':locations})
+
     
 
 def viewPhoto(request,pk):
