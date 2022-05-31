@@ -39,12 +39,8 @@ def search_results(request):
     print("submitted", request)
     category = request.GET.get('image')
     if category:
-        # search_image = request.GET.get('category')
         searched_images = Image.search_by_category(category)
-        # message = f"{search_image}"
-        # print (search_image)
         return render(request,'gallery/search.html',{'searched_images':searched_images})
-
     else:
         message = "Did not really get that, please search again."
         return render(request,'gallery/search.html', {'message':message})
