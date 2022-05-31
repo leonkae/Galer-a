@@ -1,0 +1,136 @@
+-{% extends 'gallery/base.html' %} {% block content %}
+
+<!-- styles -->
+<style>
+  .title {
+    margin-top: 100px;
+  }
+  h1 {
+    font-family: "Grand Hotel", cursive;
+    font-size: 70px;
+    color: #dfb722;
+  }
+  .card {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+</style>
+<!-- end of styles -->
+<div class="con-wrapper-fluid">
+  <!-- conatiner div -->
+  <div class="title">
+    <h1 style="text-align: center">Galería</h1>
+  </div>
+  <div class="container">
+    <!-- div that contains everything -->
+    <div class="row">
+      <!-- displaying actual images -->
+      {% for image in images %}
+      <div class="col-s-6 col-md-4">
+        <div class="card my-2">
+          <img
+            src="{{ image.image.url }}"
+            class="image-thumbnail"
+            alt="Card image cap"
+          />
+          <div
+            class="card-body"
+            style="font-family: 'Poppins', sans-serif; font-size: larger"
+          >
+            <small>Category: {{image.category.name}}</small>
+            <br />
+            <small>Location: {{image.location.name}}</small>
+          </div>
+          <div class="card-body">
+            <a href="{% url 'photo' image.id %}" class="btn btn-sm m-2"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="feather feather-eye"
+              >
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle></svg
+            ></a>
+            <button
+              type="button"
+              class="btn btn-sm m-2"
+              data-bs-toggle="modal"
+              data-bs-target="#modal{{image.id}}"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="feather feather-book-open"
+              >
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+              </svg>
+            </button>
+            <!-- copy link icon -->
+            <input type="text" value="{{image.image.url}}" hidden />
+            <button onclick="copylink(this)" class="btn btn-sm m-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="feather feather-copy"
+              >
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path
+                  d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="modal fade"
+        id="modal{{image.id}}"
+        tabindex="-1"
+        aria-labelledby="modal{{image.id}}"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modal{{image.id}}">{{image.name}}</h5>
+            </div>
+            <div class="modal-body">
+              <img
+                src="{{ image.image.url }}"
+                class="image-thumbnail"
+                alt="Card image cap"
+              />
+              <small>Category: {{image.category.name}}</small>
+              <br />
+              <small>Location: {{image.location.name}}</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}
