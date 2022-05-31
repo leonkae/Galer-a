@@ -38,6 +38,23 @@ class CategoryTestclass(TestCase):
         self.assertTrue(len(category),1)
         
         
+class LocationTestclass(TestCase):
+    '''tests for Location'''        
+    def setUp(self):
+        self.location =Location(name='kajiado')
+    
+    def test_instance(self):
+        self.assertTrue(isinstance(self.location,Location))    
+        
+    def tearDown(self):
+        Category.objects.all().delete
+        
+    def test_get_category(self):
+        self.location.save()
+        location = Location.objects.all()
+        self.assertTrue(len(location),1)        
+        
+        
         
         
                     
