@@ -15,6 +15,7 @@ above is the landing page it holds the image crate, navbar and alllows the user 
 * HTML/CSS
 * Javascript
 * GIT
+* POSTGRESS
 
 # Copyright and License
 Copyright 2022 ANDRE KAEULANA
