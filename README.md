@@ -10,6 +10,11 @@ This is a personal gallery application that allows a user to display photos for 
 
 ![navigation](static/../gallery/static/Screenshot%20from%202022-05-31%2009-34-20.png)
 above is the landing page it holds the image crate, navbar and alllows the user to access any point of the app.
+# Technologies Used
+* python/Django
+* HTML/CSS
+* Javascript
+* GIT
 
 # Copyright and License
 Copyright 2022 ANDRE KAEULANA
