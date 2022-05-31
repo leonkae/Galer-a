@@ -28,38 +28,6 @@
     <!-- div that contains everything -->
     <div class="row">
       <!-- displaying actual images -->
-
-      <!-- start of modal -->
-      {% for image in images %}
-      <div
-        class="modal fade "
-        id="exampleModal"
-        tabindex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">{{image.name}}</h5>
-            </div>
-            <div class="modal-body">
-              <img
-                src="{{ image.image.url }}"
-                class="image-thumbnail"
-                alt="Card image cap"
-              />
-
-              <small>Category: {{image.category.name}}</small>
-              <br />
-              <small>Location: {{image.location.name}}</small>
-            </div>
-          </div>
-        </div>
-      </div>
-      {% endfor %}
-      <!-- end of moadal -->
-
       {% for image in images %}
       <div class="col-s-6 col-md-4">
         <div class="card my-2">
@@ -99,7 +67,7 @@
               type="button"
               class="btn btn-sm m-2"
               data-bs-toggle="modal"
-              data-bs-target="#exampleModal"
+              data-bs-target="#modal{{image.id}}"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -142,6 +110,32 @@
         </div>
       </div>
 
+      <div
+        class="modal fade"
+        id="modal{{image.id}}"
+        tabindex="-1"
+        aria-labelledby="modal{{image.id}}"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modal{{image.id}}">{{image.name}}</h5>
+            </div>
+            <div class="modal-body">
+              <img
+                src="{{ image.image.url }}"
+                class="image-thumbnail"
+                alt="Card image cap"
+              />
+
+              <small>Category: {{image.category.name}}</small>
+              <br />
+              <small>Location: {{image.location.name}}</small>
+            </div>
+          </div>
+        </div>
+      </div>
       {% endfor %}
     </div>
   </div>
