@@ -2,12 +2,10 @@
 
 <div class="container">
   <a href="{%url 'gallery' %}" class="btn btn-dark my-3">Back</a>
-
   <div class="row justify-content-center">
     <div class="col-md-4">
       <div class="card">
         <form method="POST" action="" enctype="multipart/form-data">
-
             {% csrf_token %}
           <div class="form-group m-1">
             <label>name</label>
@@ -18,7 +16,6 @@
               class="form-control"
             />
           </div>
-
           <div class="form-group m-1">
             <label>Description</label>
             <input
@@ -28,7 +25,6 @@
               class="form-control"
             />
           </div>
-
           <div class="form-group m-1">
             <label>Category </label>
             <select name="category" placeholder="category" class="form-control">
@@ -40,7 +36,6 @@
               {% endfor %}
             </select>
           </div>
-
           <div class="form-group m-1">
             <label>new category</label>
             <input
@@ -50,7 +45,6 @@
               class="form-control"
             />
           </div>
-
           <div class="form-group m-1">
             <label>location </label>
             <input
@@ -60,17 +54,14 @@
               class="form-control"
             />
           </div>
-
           <div class="form-group m-1">
             <label>Upload image </label>
             <input name="location" type="file" class="form-control-file" />
           </div>
-
           <button type="submit" class="btn btn-primary m-3">Submit</button>
         </form>
       </div>
     </div>
   </div>
 </div>
-
 {% endblock %}

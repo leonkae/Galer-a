@@ -1,9 +1,7 @@
 {% extends 'gallery/base.html' %} {% block content %}
-
 <!-- conatiner  -->
 <div class="container">
   <a href="{%url 'gallery' %}" class="btn btn-dark mt-5 my-3">Back</a>
-
   <!-- actual search actions -->
   <div class="row">
     {% if gallery %}
@@ -12,7 +10,6 @@
     <h2>no results {{message}}</h2>
     {% endif %}
   </div>
-
   <!-- after search displayed -->
   <div>
     {% for image in searched_images %}
@@ -23,12 +20,10 @@
           class="image-thumbnail"
           alt="Card image cap"
         />
-
         <div class="card-body">
           <small>Category:{{image.category.name}}</small>
           <small> location:{{image.location.name}}</small>
         </div>
-
         <a
           href="{% url 'photo' image.id %}"
           class="btn btn-outline-dark btn-sm m-2"
@@ -36,7 +31,6 @@
         >
       </div>
     </div>
-
     {% endfor %}
   </div>
 </div>
