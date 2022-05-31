@@ -63,7 +63,9 @@ class LocationTestclass(TestCase):
         self.location.save()
         locations = Location.objects.filter()
         self.assertTrue(len(locations))      
-        
+    
+    def test_save_location(self): 
+        self.location.save()   
         
         
         
