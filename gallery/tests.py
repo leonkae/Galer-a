@@ -20,3 +20,11 @@ class ImageTestClass(TestCase):
         image = Image.get_images()
         self.assertTrue(len(image)>0) 
                
+class CategoryTestclass(TestCase):
+    '''tests for Category'''
+    
+    def setUp(self):
+        self.category = Category(name='random')
+        
+    def test_instance(self):
+        self.assertTrue(isinstance(self.category,Category))   
