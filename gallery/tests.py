@@ -37,6 +37,11 @@ class CategoryTestclass(TestCase):
         category = Category.objects.all()
         self.assertTrue(len(category),1)
         
+    def test_filter_category(self):
+        self.category.save()
+        categories = Category.objects.filter()
+        self.assertTrue(len(categories))   
+        
         
 class LocationTestclass(TestCase):
     '''tests for Location'''        
@@ -52,7 +57,12 @@ class LocationTestclass(TestCase):
     def test_get_category(self):
         self.location.save()
         location = Location.objects.all()
-        self.assertTrue(len(location),1)        
+        self.assertTrue(len(location),1)    
+        
+    def test_filter_location(self):
+        self.location.save()
+        locations = Location.objects.filter()
+        self.assertTrue(len(locations))      
         
         
         
