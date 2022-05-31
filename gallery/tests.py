@@ -31,3 +31,13 @@ class CategoryTestclass(TestCase):
         
     def tearDown(self):
         Category.objects.all().delete    
+    
+    def test_get_category(self):
+        self.category.save()
+        category = Category.objects.all()
+        self.assertTrue(len(category),1)
+        
+        
+        
+        
+                    
