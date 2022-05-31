@@ -28,3 +28,6 @@ class CategoryTestclass(TestCase):
         
     def test_instance(self):
         self.assertTrue(isinstance(self.category,Category))   
+        
+    def tearDown(self):
+        Category.objects.all().delete    
